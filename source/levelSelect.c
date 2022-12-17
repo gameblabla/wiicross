@@ -1,3 +1,4 @@
+#include <aesndlib.h>
 #include "levelSelect.h"
 
 extern s_level leveldata[NUMLEVELS];

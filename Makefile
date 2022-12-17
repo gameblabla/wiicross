@@ -25,15 +25,15 @@ INCLUDES	:=
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O2 -Wall $(MACHDEP) $(INCLUDE)
+CFLAGS	= -Ofast -fno-common -fdata-sections -ffunction-sections -flto -Wall $(MACHDEP) $(INCLUDE) -I/opt/devkitpro/portlibs/ppc/include
 CXXFLAGS	=	$(CFLAGS)
 
-LDFLAGS	=	-g $(MACHDEP) -Wl,-Map,$(notdir $@).map
+LDFLAGS	= $(MACHDEP) -Wl,-Map,$(notdir $@).map -Wl,--as-needed -Wl,--gc-sections -flto -s
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lfat -lmodplay -lmad -lwiiuse -lbte -logc -lpng -lz -lm  ../lib/libtremor.a
+LIBS	:= -Wl,--start-group -lfat -lmodplay_asnd -lmad -lwiiuse -lbte -logc -lpng -lz -lm -lasnd ../lib/libtremor.a -L/opt/devkitpro/portlibs/ppc/lib -lz -lpng -Wl,--end-group
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing

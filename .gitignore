@@ -1,0 +1,8 @@
+*.dol
+*.elf
+*.o
+*.map
+*.a
+*.d
+build/
+*.zip

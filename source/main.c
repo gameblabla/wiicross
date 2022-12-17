@@ -29,6 +29,11 @@ extern int oy;
 int ssc = 0;
 char sscc[10];
 
+// Fix for modern GCC
+WPADData wpaddata[SAMP_BUFS];
+WPADData *wpads[4];
+s_song song;
+
 int main() {
 	
 	initWii();

@@ -19,13 +19,15 @@
 #define FMT_PNG 1
 
 //#define IS_EMU
+#ifndef HW_DOL
 #define MAKE_WII
+#endif
 
 extern GXRModeObj *vmode;
 extern u32 *xfb[2];
 extern int whichfb;
-bool systemReset;
-bool systemPowerOff;
+extern bool systemReset;
+extern bool systemPowerOff;
 
 typedef struct{
 

@@ -3,6 +3,8 @@
 
 extern s_option options;
 
+MODPlay mod_track;
+
 void initSound(){
 
 	#ifdef IS_EMU
@@ -108,10 +110,9 @@ void playOggMusic(){
 int loadCustomSongs(){
 
 	struct stat st;
-	char filename[MAXPATHLEN];
-	
-	DIR_ITER* dir;
-	dir = diropen (DIR_ROOT "res/music");
+	struct dirent *entry;
+	DIR* dir;
+	dir = opendir (DIR_ROOT "res/music");
 	
 	int i = 0;
 	
@@ -119,17 +120,18 @@ int loadCustomSongs(){
 		return -1;
 	}
 	
-	while(dirnext(dir, filename, &st) == 0){
+	while ((entry = readdir(dir)) != NULL){
+		stat(entry->d_name,&st);
 	
-		if((strlen(filename) > 2) && (st.st_mode == 33206)){
-			if(checkOggExt(filename)){
-				strcpy(song.songsArray[i], filename);
+		if((strlen(entry->d_name) > 2) && (st.st_mode == 33206)){
+			if(checkOggExt(entry->d_name)){
+				strcpy(song.songsArray[i], entry->d_name);
 				i++;
 			}
 		}
 	}
 	
-	dirclose(dir);
+	closedir(dir);
 	
 	return i;
 }

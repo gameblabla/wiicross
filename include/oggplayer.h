@@ -26,9 +26,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef __OGGPLAYER_H__
 #define __OGGPLAYER_H__
 
-
-
-#include "snd.h"       // sound library
+#include <asndlib.h>
 
 #include "../tremor/ivorbiscodec.h"
 #include "../tremor/ivorbisfile.h"

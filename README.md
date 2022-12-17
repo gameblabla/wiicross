@@ -8,6 +8,15 @@ More info on [my blog](http://scognito.wordpress.com/2008/12/02/pieros-wiicross-
 
 ![Game cover wii](https://github.com/scognito/wiicross/blob/master/gfx%20work/cover-wii.jpg)
 
+# Compiling (gameblabla)
+
+You need a version of gcmodplay that uses asnd instead of aesnd.
+By default it uses aesnd instead of asnd so it won't compile as is by default and if you add -laesnd to it,
+both can't be used at the same time so you will only get sound effects playing and no music.
+
+I provide such a thing on my repo :
+https://github.com/gameblabla/libogc2
+
 ## How to play
 
 The numbers measure how many unbroken lines of filled-in squares there are in any given row or column. For example, a clue of "4 8 3" would mean there are sets of four, eight, and three filled squares, in that order, with at least one blank square between successive groups. It's easier playing with game directly than understand the rules at first :)
